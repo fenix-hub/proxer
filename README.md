@@ -1,37 +1,42 @@
-<p align="center">
-	<a href="https://discord.gg/TBR9bRjd6Z">
-		<img src="https://discordapp.com/api/guilds/861917584437805127/widget.png?style=banner2" alt="Discord Banner"/>
-	</a>
-</p>
+# Proxer
+
+Simple go server which forwards any request to a proxy using `http_proxy` and `https_proxy` environment variable.
+
+## Run locally
+
+Install this module
+```
+go install github.com/fenix-hub/proxer
+```  
+
+Configure the following environment variables
+```
+HTTP_PROXY=http://<user>:<password>@<ip>:<port>
+HTTPS_PROXY=https://<user>:<password>@<ip>:<port>
+```  
+
+and run `${GOPATH}/proxer`.  
+  
+It will be running on `localhost:8080` by default.  
+
+## Run with Docker
+Create an `.env` file in the root of this project accordingly
+```
+PROXER_PORT=<your port>		# default to 8080
+HTTP_PROXY=http://<user>:<password>@<ip>:<port>
+HTTPS_PROXY=https://<user>:<password>@<ip>:<port>
+```  
+
+and run `docker compose up -d`.
+  
+It will be running on `localhost:<your port>` by default.  
 
 ---
 
-# M3O Proxy
-
-The m3o proxy is a client for the M3O apis which you can run locally
-
-## Usage
-
-Populate the `M3O_API_TOKEN` environment variable
-
-Install the m3o-proxy
-
-```
-go install github.com/m3o/m3o-proxy
-```
-
-Or download the latest [release](https://github.com/m3o/m3o-proxy/releases)
-
-Run it like so
-
-```
-m3o-proxy
-```
-
-It will be running on `localhost:8080`. Now call helloworld.
-
-```
-curl http://localhost:8080/v1/helloworld/Call \
-  -H 'Content-Type: application/json'
-  -d '{"name": "Alice"}
+To define the target host, use `X-ProxyTo-Schema` and `X-ProxyTo-Host`.  
+Any HTTP Method, Header and Body will be forwarded untouched.  
+```curl
+curl http://localhost:8080/get \
+  -H 'X-ProxyTo-Schema: http' \
+  -H 'X-ProxyTo-Host: httpbin.org'
 ```

@@ -42,5 +42,5 @@ curl http://localhost:8080/get \
 ```
 will result in the (curl) equivalent:
 ```bash
-curl -X http_proxy http://httpbin.org/get
+curl --proxy-user <user>:<password> --proxy <http/https_proxy> -X <METHOD> -D <BODY> -H <HEADERS> http://httpbin.org/get
 ```

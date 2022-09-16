@@ -3,6 +3,8 @@
 **Proxer** is a simple Go server which works as a "proxy wrapper".  
 It forwards any request to a proxy using `http_proxy` and `https_proxy` environment variable.  
 
+![proxer-diagram](proxer.go.svg)
+
 ### Why?
 Its main purpose is to serve as a workaround for environments and distributions which ignore or do not support `*_proxy` environment variables.  
 In some corporations, any request must be forwarded through a proxy to access the internet, and in the previous cases entire microservices and containers end up being isolated from the web.  

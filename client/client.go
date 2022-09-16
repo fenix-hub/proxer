@@ -1,11 +1,11 @@
 package client
 
 import (
-  "fmt"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"strings"
-  "time"
+	"time"
 )
 
 type Handler struct {

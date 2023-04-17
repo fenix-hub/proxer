@@ -10,5 +10,5 @@ services:
     ports:
       - ${PROXER_PORT:-8080}:8080
     environment:
-      http_proxy=${HTTP_PROXER}
-      https_proxy=${HTTPS_PROXER}
+      - http_proxy=${HTTP_PROXER}
+      - https_proxy=${HTTPS_PROXER}
